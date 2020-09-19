@@ -1,0 +1,2 @@
+- Import package into project that want to write log
+- Config log want to output includes: level log, log path, log name in config.json
