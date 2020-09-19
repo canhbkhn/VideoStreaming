@@ -20,7 +20,7 @@ def gen():
         # fps = count/(time.time() - _time_)
         # print("FPS: {0}".format(fps))
         log = Logger('config.json')
-        log.WriteLog(1, fps)
+        log.WriteLog(0, str(fps))
 
         font = font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(frame,  
