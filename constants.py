@@ -7,8 +7,10 @@ ERROR = 4
 RELEASE = 5
 NONE = 6
 
-# utility section
+# Utility section
 INT = 1
 STRING = 2
 FLOAT = 3
 DICTION = 4
+
+# 
