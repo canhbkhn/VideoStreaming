@@ -3,6 +3,7 @@ import time
 import json
 from datetime import datetime
 from time import gmtime, strftime, localtime
+import constants
 
 class Logger:
     logLevel = -1
@@ -25,33 +26,33 @@ class Logger:
        
     
     def logTrace(self, msg):
-        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- TRACE: ", msg)
-        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - TRACE: " + msg + '\n'
+        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- [TRACE]: ", msg)
+        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - [TRACE]: " + msg + '\n'
         self.writeToFile(self.logPath + "\\" + self.logName, content)
 
     def logDebug(self, msg):
-        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- DEBUG: ", msg)
-        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - DEBUG: " + msg + '\n'
+        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- [DEBUG]: ", msg)
+        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - [DEBUG]: " + msg + '\n'
         self.writeToFile(self.logPath + "\\" + self.logName, content)
 
     def logInfo(self, msg):
-        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- INFO: ", msg)
-        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - INFO: " + msg + '\n'
+        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- [INFO]: ", msg)
+        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - [INFO]: " + msg + '\n'
         self.writeToFile(self.logPath + "\\" + self.logName, content)
 
     def logWarning(self, msg):
-        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- WARN: ", msg)
-        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - WARN: " + msg + '\n'
+        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- [WARN]: ", msg)
+        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - [WARN]: " + msg + '\n'
         self.writeToFile(self.logPath + "\\" + self.logName, content)
 
     def logRelease(self, msg):
-        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- RELEASE: ", msg)
-        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - RELEASE: " + msg + '\n'
+        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- [RELEASE]: ", msg)
+        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - [RELEASE]: " + msg + '\n'
         self.writeToFile(self.logPath + "\\" + self.logName, content)
 
     def logError(self, msg):
-        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- ERROR: ", msg)
-        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - ERROR: " + msg + '\n'
+        print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- [ERROR]: ", msg)
+        content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - [ERROR]: " + msg + '\n'
         self.writeToFile(self.logPath + "\\" + self.logName, content)
 
     def logNone(self, msg):
@@ -61,21 +62,20 @@ class Logger:
         print(functionName)
 
     def WriteLog(self,logLevel, msg):
-        if logLevel == 0:
+        if logLevel == constants.TRACE:
             self.logTrace(msg)
-        elif logLevel == 1:
+        elif logLevel == constants.DEBUG:
             self.logDebug(msg)
-        elif logLevel == 2:
+        elif logLevel == constants.INFO:
             self.logInfo(msg)
-        elif logLevel == 3:
+        elif logLevel == constants.WARN:
             self.logWarning(msg)
-        elif logLevel == 4:
+        elif logLevel == constants.ERROR:
             self.logError(msg)
-        elif logLevel == 5:
+        elif logLevel == constants.RELEASE:
             self.logRelease(msg)
-        elif logLevel == 6:
+        elif logLevel == constants.NONE:
             self.logNone(msg)
-
 
 
 if __name__ == '__main__':

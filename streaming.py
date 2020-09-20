@@ -3,14 +3,18 @@ import cv2
 import time
 
 from testlog import Logger
+import constants
+import utils
 
 app = Flask(__name__)
+#log = Logger('config.json')
 
 @app.route('/')
 def index():
     return render_template('index.html')
 def logger():
-    print("test logger")
+    log = Logger('config.json')
+    log.WriteLog(constants.DEBUG, 'logger function')
 def gen():
     cap = cv2.VideoCapture(0)
     count = 0
@@ -19,8 +23,8 @@ def gen():
         fps = cap.get(cv2.CAP_PROP_FPS)
         # fps = count/(time.time() - _time_)
         # print("FPS: {0}".format(fps))
-        log = Logger('config.json')
-        log.WriteLog(0, str(fps))
+        # log = Logger('config.json')
+        # log.WriteLog(0, str(fps))
 
         font = font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(frame,  
@@ -41,10 +45,17 @@ def gen():
 
 @app.route('/video_feed')
 def video_feed():
+    log = Logger('config.json')
+    log.WriteLog(0,"function video_feed")
     return Response(gen(),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 @app.route('/log')
 def log():
+    log = Logger('config.json')
+    log.WriteLog(constants.DEBUG, "function log")
     return Response(logger())
+
 if __name__ == '__main__':
+    log = Logger('config.json')
+    log.WriteLog(constants.DEBUG, "main thread")
     app.run(debug=True)
