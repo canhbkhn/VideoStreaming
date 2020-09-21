@@ -19,8 +19,14 @@ def logFormat(msg):
         pass
 
 # Split string
-def splitString(msg):
-    pass
+def splitString(msg, markKey):
+    if markKey not in msg:
+        return ""
+    index = 0
+    for ss in msg:
+        if ss == markKey:
+            index+=1
+            
 
 # String length
 def strLen(msg):
