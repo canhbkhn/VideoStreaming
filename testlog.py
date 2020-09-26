@@ -24,7 +24,6 @@ class Logger:
         file.write(msg)
         file.close()
        
-    
     def logTrace(self, msg):
         print(strftime("%Y-%m-%d %H:%M:%S", localtime()) , "- [TRACE]: ", msg)
         content = strftime("%Y-%m-%d %H:%M:%S", localtime()) + " - [TRACE]: " + msg + '\n'

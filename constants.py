@@ -13,4 +13,7 @@ STRING = 2
 FLOAT = 3
 DICTION = 4
 
-# Code section
+# Mouse sections
+LEFT = 1
+MIDDLE = 2
+RIGHT = 3
